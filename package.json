@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "'JustinNSmith' <'Smithjn@g.cofc.edu'>",
@@ -17,6 +18,7 @@
     "@types/jest": "^26.0.13",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
     "eslint": "^7.8.1",
@@ -24,7 +26,9 @@
     "eslint-plugin-react": "^7.20.6",
     "jest": "^26.4.2",
     "prettier-eslint-cli": "^5.0.0",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
