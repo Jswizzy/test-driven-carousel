@@ -2,12 +2,12 @@ import React from 'react';
 
 const referralParams = 'utm_source=test-driven-carousel&utm_medium=referral';
 
-const getUsernameUrl = (username) =>
+const getUsernameUrl = username =>
   `https://unsplash.com/@${username}?${referralParams}`;
 
 const getAttribution = ({ name, username }) => (
   <>
-    Photo by <a href={getUsernameUrl(username)}>{name}</a>on{''}
+    Photo by <a href={getUsernameUrl(username)}>{name}</a> on {''}
     <a href={'https://unsplash.com/?@{referralParams}'}>Unsplash</a>
   </>
 );

@@ -9,4 +9,9 @@ module.exports = {
     quotes: ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'always-multiline'],
   },
+  settings: {
+    react: {
+      version: '16.13.1',
+    },
+  },
 };
