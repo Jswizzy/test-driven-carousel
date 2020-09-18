@@ -8,29 +8,10 @@ describe('CarouselSlide', () => {
   beforeEach(() => {
     wrapper = shallow(
       <CarouselSlide
-        imgUrl='https://example.com/default.jpg'
-        description='Default test image'
+        imgUrl="https://example.com/default.jpg"
+        description="Default test image"
       />
     );
-  });
-
-  it('renders a <figure>', () => {
-    expect(wrapper.type()).toBe('figure');
-  });
-
-  it('renders props.Img and a <figcaption>', () => {
-    expect(wrapper.childAt(0).type()).toBe(CarouselSlide.defaultProps.Img);
-    expect(wrapper.childAt(1).type()).toBe('figcaption');
-  });
-
-  it('uses `description` and `attribution` as the <figcaption>', () => {
-    const description = 'A jaw-dropping spectacular image';
-    const attribution = 'Trevor Burnham';
-    wrapper.setProps({ description, attribution });
-    expect(wrapper.find('figcaption').text()).toBe(
-      `${description} ${attribution}`
-    );
-    expect(wrapper.find('figcaption strong').text()).toBe(description);
   });
 
   it('passes other props through to the <figure>', () => {
@@ -52,8 +33,22 @@ describe('CarouselSlide', () => {
       mounted = mount(<Img src={imgUrl} imgHeight={500} />);
     });
 
-    it('renders an <img> with the given src', () => {
-      expect(mounted.containsMatchingElement(<img src={imgUrl} />)).toBe(true);
+    it('renders correctly', () => {
+      expect(mounted.find('img')).toMatchSnapshot();
     });
+
+    it('uses imgHeight as the height style property', () => {
+      expect(mounted).toHaveStyleRule('height', '500px');
+      mounted.setProps({ imgHeight: 'calc(100vh - 100px)' });
+      expect(mounted).toHaveStyleRule('height', 'calc(100vh-100px)');
+    });
+  });
+
+  it('renders correctly', () => {
+    wrapper.setProps({
+      description: 'Description',
+      attribution: 'Attribution',
+    });
+    expect(wrapper).toMatchSnapshot();
   });
 });
